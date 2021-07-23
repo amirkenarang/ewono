@@ -12,5 +12,7 @@ export const envConfig = {
       .default('development')
       .required(),
     MONGODB_URL: Joi.string().required(),
+    JWT_EXPIRATION: Joi.string().required(),
+    HASH_SALT: Joi.number().required(),
   }),
 };

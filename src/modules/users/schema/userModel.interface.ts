@@ -4,6 +4,7 @@ import { UserDocument } from './user.schema';
 export interface UserModel extends Model<UserDocument> {
   username: string;
   password: string;
+  email: string;
   paginate(any): {
     results: any;
     previous: string;

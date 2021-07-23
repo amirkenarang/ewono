@@ -10,6 +10,9 @@ export class User {
 
   @Prop()
   password: string;
+
+  @Prop()
+  email: string;
 }
 export const UserSchema = SchemaFactory.createForClass(User);
 UserSchema.set('timestamps', true);
