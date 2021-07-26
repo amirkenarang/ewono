@@ -5,6 +5,7 @@ import { datbaseConfig } from './config/database.config';
 import { envConfig } from './config/env/env.config';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
+import { WordsModule } from './modules/words/words.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { UsersModule } from './modules/users/users.module';
     MongooseModule.forRootAsync(datbaseConfig),
     AuthModule,
     UsersModule,
+    WordsModule,
   ],
   controllers: [],
   providers: [],
