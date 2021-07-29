@@ -34,22 +34,22 @@ export class WordsController {
     return this.wordsService.findAll(req.user.username);
   }
 
-  @Get(':word')
-  async findOne(@Param('word') word: string, @Request() req) {
-    return this.wordsService.findOne(word, req.user.username);
+  @Get(':id')
+  async findOne(@Param('id') id: string, @Request() req) {
+    return this.wordsService.findOne(id, req.user.username);
   }
 
-  @Patch(':word')
+  @Patch(':id')
   async update(
-    @Param('word') word: string,
+    @Param('id') id: string,
     @Body() updateWordDto: UpdateWordDto,
     @Request() req,
   ) {
-    return this.wordsService.update(word, req.user.username, updateWordDto);
+    return this.wordsService.update(id, req.user.username, updateWordDto);
   }
 
-  @Delete(':word')
-  async remove(@Param('word') word: string, @Request() req) {
-    return this.wordsService.remove(word, req.user.username);
+  @Delete(':id')
+  async remove(@Param('id') id: string, @Request() req) {
+    return this.wordsService.remove(id, req.user.username);
   }
 }

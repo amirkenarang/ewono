@@ -2,9 +2,11 @@ import { Model } from 'mongoose';
 import { WordDocument } from './word.schema';
 
 export interface WordModel extends Model<WordDocument> {
+  _id: string;
   user: string;
   word: string;
   translate: [string];
+  example: [string];
   description: string;
   synonym: [string];
   antonym: [string];

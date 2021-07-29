@@ -1,15 +1,20 @@
 import { SchemaFactory, Schema, Prop } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Schema as MongooseSchema } from 'mongoose';
 
 export type WordDocument = Word & Document;
 
 @Schema({ collection: 'words' })
 export class Word {
+  _id: MongooseSchema.Types.ObjectId;
+
   @Prop({ ref: 'User' })
   username: string;
 
   @Prop({ required: true })
   word: string;
+
+  @Prop()
+  example: [string];
 
   @Prop()
   translate: [string];

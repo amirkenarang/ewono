@@ -18,25 +18,25 @@ export class WordRepository {
     return words;
   }
 
-  async findOne(word: string, username: string): Promise<WordEntityDto> {
-    const result = await this.wordModel.findOne({ word, username });
+  async findOne(_id: string, username: string): Promise<WordEntityDto> {
+    const result = await this.wordModel.findOne({ _id, username });
     return result;
   }
 
   async update(
-    word: string,
+    _id: string,
     username: string,
     updateWordDto: UpdateWordDto,
   ): Promise<any> {
     const result = await this.wordModel.updateOne(
-      { word, username },
+      { _id, username },
       updateWordDto,
     );
     return result;
   }
 
-  async remove(word: string, username: string): Promise<WordEntityDto> {
-    const result = await this.wordModel.remove({ word, username });
+  async remove(_id: string, username: string): Promise<WordEntityDto> {
+    const result = await this.wordModel.remove({ _id, username });
     return result;
   }
 }

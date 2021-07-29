@@ -18,18 +18,18 @@ export class WordsService {
     return words;
   }
 
-  async findOne(word: string, username: string): Promise<WordEntityDto> {
-    const result = await this.wordRepository.findOne(word, username);
+  async findOne(id: string, username: string): Promise<WordEntityDto> {
+    const result = await this.wordRepository.findOne(id, username);
     return result;
   }
 
-  async update(word: string, username: string, updateWordDto: UpdateWordDto) {
-    await this.wordRepository.update(word, username, updateWordDto);
+  async update(id: string, username: string, updateWordDto: UpdateWordDto) {
+    await this.wordRepository.update(id, username, updateWordDto);
     return updateWordDto;
   }
 
-  async remove(word: string, username: string): Promise<any> {
-    await this.wordRepository.remove(word, username);
+  async remove(id: string, username: string): Promise<any> {
+    await this.wordRepository.remove(id, username);
     return { response: 'Word Deleted' };
   }
 }
