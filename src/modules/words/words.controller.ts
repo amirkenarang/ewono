@@ -7,13 +7,13 @@ import {
   Param,
   Delete,
   UseGuards,
-  Request,
 } from '@nestjs/common';
 import { WordsService } from './words.service';
 import { CreateWordDto } from './dto/create-word.dto';
 import { UpdateWordDto } from './dto/update-word.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { WordEntityDto } from './dto/word-entity.dto';
+import { RequestUsername } from '../users/decorators/request-username.decorator';
 
 @Controller('/api/v1/word')
 @UseGuards(JwtAuthGuard)
@@ -21,37 +21,40 @@ export class WordsController {
   constructor(private readonly wordsService: WordsService) {}
 
   @Post()
-  async create(@Body() createWordDto: WordEntityDto, @Request() req) {
+  async create(
+    @Body() createWordDto: WordEntityDto,
+    @RequestUsername() username: string,
+  ) {
     delete createWordDto._id;
     const word: CreateWordDto = {
       ...createWordDto,
-      username: req.user.username,
+      username,
     };
     const response = await this.wordsService.create(word);
     return response;
   }
 
   @Get()
-  async findAll(@Request() req): Promise<WordEntityDto[]> {
-    return this.wordsService.findAll(req.user.username);
+  async findAll(@RequestUsername() username: string): Promise<WordEntityDto[]> {
+    return this.wordsService.findAll(username);
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string, @Request() req) {
-    return this.wordsService.findOne(id, req.user.username);
+  async findOne(@Param('id') id: string, @RequestUsername() username: string) {
+    return this.wordsService.findOne(id, username);
   }
 
   @Patch(':id')
   async update(
     @Param('id') id: string,
     @Body() updateWordDto: UpdateWordDto,
-    @Request() req,
+    @RequestUsername() username: string,
   ) {
-    return this.wordsService.update(id, req.user.username, updateWordDto);
+    return this.wordsService.update(id, username, updateWordDto);
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: string, @Request() req) {
-    return this.wordsService.remove(id, req.user.username);
+  async remove(@Param('id') id: string, @RequestUsername() username: string) {
+    return this.wordsService.remove(id, username);
   }
 }

@@ -1,5 +1,6 @@
 import { Controller, Get, Request, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { RequestUsername } from './decorators/request-username.decorator';
 import { UsersService } from './users.service';
 
 @UseGuards(JwtAuthGuard)
@@ -7,7 +8,7 @@ import { UsersService } from './users.service';
 export class UserController {
   constructor(private readonly userService: UsersService) {}
   @Get('/me')
-  async login(@Request() req) {
-    return this.userService.findOne(req.user.username);
+  async login(@RequestUsername() username: string) {
+    return this.userService.findOne(username);
   }
 }
