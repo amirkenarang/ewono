@@ -14,19 +14,19 @@ export class Word {
   word: string;
 
   @Prop()
-  example: [string];
+  example: string;
 
   @Prop()
-  translate: [string];
+  translate: string;
 
   @Prop()
   description: string;
 
   @Prop()
-  synonym: [string];
+  synonym: string;
 
   @Prop()
-  antonym: [string];
+  antonym: string;
 
   @Prop()
   isNoun: boolean;

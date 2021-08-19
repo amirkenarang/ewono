@@ -4,11 +4,11 @@ export class WordEntityDto {
   _id: ObjectId;
   username: string;
   word: string;
-  translate: [string];
-  example: [string];
+  translate: string;
+  example: string;
   description: string;
-  synonym: [string];
-  antonym: [string];
+  synonym: string;
+  antonym: string;
   isNoun: boolean;
   isVerb: boolean;
   isAdjective: boolean;

@@ -21,12 +21,14 @@ export class WordsController {
   constructor(private readonly wordsService: WordsService) {}
 
   @Post()
-  async create(@Body() createWordDto: CreateWordDto, @Request() req) {
-    const word = await this.wordsService.create({
+  async create(@Body() createWordDto: WordEntityDto, @Request() req) {
+    delete createWordDto._id;
+    const word: CreateWordDto = {
       ...createWordDto,
       username: req.user.username,
-    });
-    return word;
+    };
+    const response = await this.wordsService.create(word);
+    return response;
   }
 
   @Get()

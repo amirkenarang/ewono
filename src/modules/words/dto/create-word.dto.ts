@@ -7,10 +7,11 @@ export class CreateWordDto {
   @IsNotEmpty()
   word: string;
 
-  translate: [string];
+  translate: string;
+  example: string;
   description: string;
-  synonym: [string];
-  antonym: [string];
+  synonym: string;
+  antonym: string;
   isNoun: boolean;
   isVerb: boolean;
   isAdjective: boolean;
