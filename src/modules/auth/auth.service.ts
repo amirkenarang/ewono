@@ -30,7 +30,7 @@ export class AuthService {
     };
   }
 
-  async register(userDto: UserDto) {
+  async register(userDto: UserDto): Promise<UserDto> {
     const salt = this.apiConfigService.hashSalt;
     const hashPassword = await bcrypt.hash(userDto.password, salt);
     userDto.password = hashPassword;

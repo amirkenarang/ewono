@@ -1,4 +1,5 @@
 import { Model, ObjectId } from 'mongoose';
+import { LanguageEnum } from '../enum/language.enum';
 import { UserDocument } from './user.schema';
 
 export interface UserModel extends Model<UserDocument> {
@@ -10,6 +11,7 @@ export interface UserModel extends Model<UserDocument> {
   lastname: string;
   cellNo: string;
   avatar: string;
+  language: LanguageEnum;
   paginate(any): {
     results: any;
     previous: string;
