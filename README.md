@@ -67,6 +67,10 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 - Twitter - [https://twitter.com](https://twitter.com/amirkenarang)
 - Linkdin - [https://linkedin.com](https://www.linkedin.com/in/amir-kenarang-b41a03107/)
 
+## Changelog
+
+To see changes in the latest version, please visit [Changelog](CHANGELOG.md)
+
 ## License
 
 Nest is [MIT licensed](LICENSE).
