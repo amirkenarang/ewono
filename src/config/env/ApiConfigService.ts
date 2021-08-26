@@ -14,9 +14,6 @@ export class ApiConfigService {
   get mongodbUrl(): string {
     return this.configService.get<string>('MONGODB_URL');
   }
-  get jwtExpiration(): string {
-    return this.configService.get<string>('JWT_EXPIRATION');
-  }
   get hashSalt(): number {
     return this.configService.get<number>('HASH_SALT');
   }
